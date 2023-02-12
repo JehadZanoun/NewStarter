@@ -14,9 +14,18 @@ class CurdController extends Controller
 
 
 
+
     public function getOffers() {
 
        return Offer:: get();
+    }
+
+    public function store() {
+        Offer::create([
+            'name' => 'offers three',
+            "price" => '6000',
+            'details' => 'offer details',
+        ]);
     }
 
 
