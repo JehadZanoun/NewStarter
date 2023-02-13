@@ -20,14 +20,39 @@ class CurdController extends Controller
        return Offer:: get();
     }
 
-    public function store() {
+  /*  public function store() {
         Offer::create([
             'name' => 'offers three',
             "price" => '6000',
             'details' => 'offer details',
         ]);
+    } */
+
+    public function create() {
+        return view('offers.created');
     }
 
+    public function store(Request $request): string
+    {
+//        return $request;
+
+        //validate data before insert to database
+
+
+        //insert
+
+        Offer::create([
+            'name' => $request -> name ,
+            'price' => $request -> price,
+            'details' => $request -> details,
+
+        ]);
+        return 'Saved Successfully';
+
+
+
+
+    }
 
 
 }
