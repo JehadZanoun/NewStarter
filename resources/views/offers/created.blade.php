@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+{{--<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">--}}
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,6 +38,16 @@
                 </div>
             @endif
 
+{{--                @if ($errors->any())--}}
+{{--                    <div class="alert alert-danger">--}}
+{{--                        <ul>--}}
+{{--                            @foreach ($errors->all() as $error)--}}
+{{--                                <li>{{ $error }}</li>--}}
+{{--                            @endforeach--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                @endif--}}
+
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex  justify-center items-center">
                   <h1>Add Your Offer</h1>
@@ -50,15 +60,18 @@
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Enter Offer</label>
-                            <input type="text" class="form-control" name="name" placeholder="Name">
+                            <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Name">
+{{--                            <span class="text-danger">{{ $errors->first('name') ?? '' }}</span>--}}
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Price</label>
-                            <input type="text" class="form-control" name="price" placeholder="Price">
+                            <input type="text" class="form-control" name="price" value="{{ old('price') }}" placeholder="Price">
+{{--                            <span class="text-danger">{{ $errors->first('price') ?? '' }}</span>--}}
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Details</label>
-                            <input type="text" class="form-control" name="details" placeholder="Details">
+                            <input type="text" class="form-control" name="details" value="{{ old('details') }}" placeholder="Details">
+{{--                            <span class="text-danger">{{ $errors->first('details') ?? '' }}</span>--}}
                         </div>
 
                         <button type="submit" class="btn btn-primary" >Save Offer</button>
