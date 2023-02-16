@@ -78,11 +78,11 @@ class CurdController extends Controller
     protected function getMessages(): array
     {
         return $massages = [
-            'name.required' =>'اسم العرض مطلوب',
-            'name.unique' => 'اسم العرض موجود',
-            'price.required' =>'سعر العرض مطلوب',
-            'price.numeric' =>'السعر يجب ان يكون أرقام',
-            'details.required' =>'تفاصيل العرض مطلوبة',
+            'name.required' => __('messages.offersName required'),
+            'name.unique' => __('messages.offersName must be  unique'),
+            'price.required' => __('messages.offersPrice required'),
+            'price.numeric' => __('messages.offersPrice must be numeric'),
+            'details.required' => __('messages.offersDetails Must be Details required'),
         ];
     }
 
