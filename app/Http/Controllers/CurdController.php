@@ -33,32 +33,27 @@ class CurdController extends Controller
         return view('offers.created');
     }
 
-    public function store(Request $request): string
+    public function store(Request $request)
     {
         // Validate data before insert to database
 
-        $rules = [
-            'name' => 'required|max:100|unique:offers,name',
-            'price' => 'required|numeric',
-            'details' => 'required'
-        ];
 
-        $massages = [
-            'name.required' =>'اسم العرض مطلوب',
-            'name.unique' => 'اسم العرض موجود',
-            'price.required' =>'سعر العرض مطلوب',
-            'price.numeric' =>'السعر يجب ان يكون أرقام',
-            'details.required' =>'تفاصيل العرض مطلوبة',
-        ];
 
-        $validate = Validator::make($request->all(),$rules,$massages);
+        $rules = $this->getRules();
+        $messages = $this->getMessages();
+
+
+        $validate = Validator::make($request->all(),$rules,$messages);
 
 //        $validate = Validator::make($request->all(),[],[]
 
 
         if($validate->fails()){
-            return $validate->errors()->first();
+//            return $validate->errors()->first();
+            return redirect()->back()->withErrors($validate)->withInput($request->all());
         }
+
+
 
         //insert
         Offer::create([
@@ -67,8 +62,28 @@ class CurdController extends Controller
             'details' => $request->details,
 
         ]);
+        return redirect()->back()->with(['success' => 'تم اضافة العرض بنجاح']);
 
-        return 'Saved Successfully';
+    }
+
+    protected function getRules(): array
+    {
+        return $rules = [
+            'name' => 'required|max:100|unique:offers,name',
+            'price' => 'required|numeric',
+            'details' => 'required'
+        ];
+    }
+
+    protected function getMessages(): array
+    {
+        return $massages = [
+            'name.required' =>'اسم العرض مطلوب',
+            'name.unique' => 'اسم العرض موجود',
+            'price.required' =>'سعر العرض مطلوب',
+            'price.numeric' =>'السعر يجب ان يكون أرقام',
+            'details.required' =>'تفاصيل العرض مطلوبة',
+        ];
     }
 
 
