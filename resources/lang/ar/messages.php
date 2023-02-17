@@ -17,7 +17,7 @@ return [
     "offersName unique" =>'يجب ألا يتكرر اسم العرض',
     "offersPrice required" =>'سعر العرض مطللوب',
     "offersPrice numeric"=>'سعر العرض يجب ان يكون ارقام',
-    "offersDetails required"=>'تفاصيل العرض مطلوبة',
+    "offersDetails"=>'تفاصيل العرض مطلوبة',
 
 
 ];

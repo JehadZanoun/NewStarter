@@ -14,10 +14,10 @@ return [
     */
 
     "offersName required" =>'Offer Name Required',
-    "offersName unique" =>'Display name must not be repeated',
+    "offersName unique" =>'Display Name Must Not Be Required',
     "offersPrice required" =>'Offer Price Required',
-    "offersPrice numeric"=>'Offer price must be numbers',
-    "offersDetails required" =>'Offer details required',
+    "offersPrice numeric"=>'Offer Price Must Be Numbers',
+    "offersDetails" =>'Offer Details Required',
 
 
 

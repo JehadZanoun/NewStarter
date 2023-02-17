@@ -71,7 +71,7 @@ class CurdController extends Controller
         return $rules = [
             'name' => 'required|max:100|unique:offers,name',
             'price' => 'required|numeric',
-            'details' => 'required'
+            'details' => 'required',
         ];
     }
 
@@ -82,7 +82,7 @@ class CurdController extends Controller
             'name.unique' => __('messages.offersName must be  unique'),
             'price.required' => __('messages.offersPrice required'),
             'price.numeric' => __('messages.offersPrice must be numeric'),
-            'details.required' => __('messages.offersDetails Must be Details required'),
+           'details.required' => __('messages.offersDetails'),
         ];
     }
 
