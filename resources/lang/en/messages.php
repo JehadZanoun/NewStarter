@@ -13,11 +13,25 @@ return [
     |
     */
 
-    "offersName required" =>'Offer Name Required',
-    "offersName unique" =>'Display Name Must Not Be Required',
-    "offersPrice required" =>'Offer Price Required',
-    "offersPrice numeric"=>'Offer Price Must Be Numbers',
+    "offersName-Required" =>'Offer Name Required',
+    "offersName-Unique" =>'Display Name Must Not Be Required',
+    "offersPrice-Required" =>'Offer Price Required',
+    "offersPrice"=>'Offer Price Must Be Numbers',
     "offersDetails" =>'Offer Details Required',
+
+    "Add Your Offer"=>'Add Your Offer',
+    "Enter Offer AR"=>'Offer Name Ar',
+    "Enter Offer EN"=>'Offer Name En',
+
+    "Price Offer"=>'Price Offer',
+    "Details Offer AR"=>'Details Offer',
+    "Details Offer EN"=>'Details Offer',
+
+    "Save Offer"=>'Save Offer',
+
+    "Name"=>'Name',
+    "success"=>'Offer added successfully',
+
 
 
 

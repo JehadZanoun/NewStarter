@@ -35,6 +35,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
         // Route::get('store','CurdController@store');
     Route::get('created', 'CurdController@create');
         Route::post('store', 'CurdController@store') -> name('offers.store');
+         Route::get('all','CurdController@getAllOffers');
+
 
 
     });
