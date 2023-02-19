@@ -55,7 +55,7 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">{{__('messages.Enter Offer')}}</th>
+            <th scope="col">{{__('messages.Name Offer')}}</th>
             <th scope="col">{{__('messages.Price Offer')}}</th>
             <th scope="col">{{__('messages.Details Offer')}}</th>
         </tr>

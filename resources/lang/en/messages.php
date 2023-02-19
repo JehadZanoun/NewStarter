@@ -22,11 +22,14 @@ return [
     "Add Your Offer"=>'Add Your Offer',
     "Enter Offer AR"=>'Offer Name Ar',
     "Enter Offer EN"=>'Offer Name En',
+    "Name Offer"=> "Name Offer",
+
+    "success"=>'success',
 
     "Price Offer"=>'Price Offer',
     "Details Offer AR"=>'Details Offer',
     "Details Offer EN"=>'Details Offer',
-
+    "Details Offer"=>'Details Offer',
     "Save Offer"=>'Save Offer',
 
     "Name"=>'Name',

@@ -61,14 +61,14 @@ class CurdController extends Controller
         //insert
         Offer::create([
             'name_ar' => $request->name_ar,
-            'name_en' => $request->name_en ,
+            'name_en' => $request->name_en,
             'price' => $request->price,
             'details_ar' => $request->details_ar,
             'details_en' => $request->details_en,
 
 
         ]);
-        return redirect()->back()->with(['success' => 'تم اضافة العرض بنجاح']);
+        return redirect()->back()->with(['success' => 'messages.success']);
 
     }
 
@@ -96,7 +96,7 @@ class CurdController extends Controller
 //    }
 
         public function getAllOffers() {
-             $viewOffer  = Offer::Select('id', 'name', 'price', 'details')->get();
+             $viewOffer  = Offer::Select('id', 'name_ar', 'name_en', 'price', 'details_ar', 'details_en')->get();
 
         return view('offers.all', compact('viewOffer'));
 

@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
 class OfferRequest extends FormRequest
 {
     /**
@@ -36,11 +35,16 @@ class OfferRequest extends FormRequest
      public function messages(): array
      {
         return [
-            'name.required' => __('messages.offersName-Required'),
-            'name.unique' => __('messages.offersName-Unique'),
-            'price.required' => __('messages.offersPri-Required'),
+            'name_ar.required' => __('messages.offersName-Required'),
+            'name_ar.unique' => __('messages.offersName-Unique'),
+            'name_en.required' => __('messages.offersName-Required'),
+            'name_en.unique' => __('messages.offersName-Unique'),
+            'price.required' => __('messages.offersPrice-Required'),
             'price.numeric' => __('messages.offersPrice'),
-            'details.required' => __('messages.offersDetails'),
+            'details_ar.required' => __('messages.offersDetails'),
+            'details_en.required' => __('messages.offersDetails'),
+
+            'success' => __('messages.success'),
         ];
     }
 }

@@ -24,6 +24,8 @@ return [
     "Enter Offer EN"=>'اسم العرض بالإنجليزي',
 
     "Price Offer"=>'سعر العرض',
+    "Name Offer"=>'اسم العرض',
+    "Details Offer"=>'تفاصيل العرض',
     "Details Offer AR"=>'تفاصيل العرض بالعربي',
     "Details Offer EN"=>'تفاصيل العرض بالإنجليزي',
 
