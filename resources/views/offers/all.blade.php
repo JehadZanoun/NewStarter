@@ -50,28 +50,52 @@
             </div>
         </div>
     </nav>
+    @if(app()->getLocale()=='ar')
+        <table class="table" style="direction: rtl">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">{{__('messages.Name Offer')}}</th>
+                <th scope="col">{{__('messages.Price Offer')}}</th>
+                <th scope="col">{{__('messages.Details Offer')}}</th>
+            </tr>
+            </thead>
+            <tbody>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">{{__('messages.Name Offer')}}</th>
-            <th scope="col">{{__('messages.Price Offer')}}</th>
-            <th scope="col">{{__('messages.Details Offer')}}</th>
-        </tr>
-        </thead>
-        <tbody>
+            @foreach($viewOffer as $Offer)
+                <tr>
+                    <th scope="row">{{$Offer->id}}</th>
+                    <td>{{$Offer->name}}</td>
+                    <td>{{$Offer->price}}</td>
+                    <td>{{$Offer->details}}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    @else
+        <table class="table" style="direction: ltr">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">{{__('messages.Name Offer')}}</th>
+                <th scope="col">{{__('messages.Price Offer')}}</th>
+                <th scope="col">{{__('messages.Details Offer')}}</th>
+            </tr>
+            </thead>
+            <tbody>
 
-        @foreach($viewOffer as $Offer)
-        <tr>
-            <th scope="row">{{$Offer->id}}</th>
-            <td>{{$Offer->name}}</td>
-            <td>{{$Offer->price}}</td>
-            <td>{{$Offer->details}}</td>
-        </tr>
-        @endforeach
-        </tbody>
-    </table>
+            @foreach($viewOffer as $Offer)
+                <tr>
+                    <th scope="row">{{$Offer->id}}</th>
+                    <td>{{$Offer->name}}</td>
+                    <td>{{$Offer->price}}</td>
+                    <td>{{$Offer->details}}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    @endif
+
 
 
     </body>

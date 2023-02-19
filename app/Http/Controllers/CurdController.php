@@ -6,6 +6,7 @@ use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class CurdController extends Controller
 {
@@ -96,7 +97,11 @@ class CurdController extends Controller
 //    }
 
         public function getAllOffers() {
-             $viewOffer  = Offer::Select('id', 'name_ar', 'name_en', 'price', 'details_ar', 'details_en')->get();
+             $viewOffer  = Offer::Select('id',
+                 'name_'. LaravelLocalization::getCurrentLocale().' as name',
+                 'details_'. LaravelLocalization::getCurrentLocale().' as details',
+
+                 'price', 'details_ar')->get();
 
         return view('offers.all', compact('viewOffer'));
 
