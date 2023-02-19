@@ -50,61 +50,64 @@
             </div>
         </div>
     </nav>
-    @if(app()->getLocale()=='ar')
-        <table class="table" style="direction: rtl">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">{{__('messages.Name Offer')}}</th>
-                <th scope="col">{{__('messages.Price Offer')}}</th>
-                <th scope="col">{{__('messages.Details Offer')}}</th>
-                <th scope="col">{{__('messages.operation')}}</th>
-
-            </tr>
-            </thead>
-            <tbody>
-
-            @foreach($viewOffer as $Offer)
-                <tr>
-                    <th scope="row">{{$Offer->id}}</th>
-                    <td>{{$Offer->name}}</td>
-                    <td>{{$Offer->price}}</td>
-                    <td>{{$Offer->details}}</td>
-                    <td><a href="{{url('offers/edit/'.$Offer->id)}}" class="btn btn-success">{{__('messages.update')}}</a></td>
-
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-    @else
-        <table class="table" style="direction: ltr">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">{{__('messages.Name Offer')}}</th>
-                <th scope="col">{{__('messages.Price Offer')}}</th>
-                <th scope="col">{{__('messages.Details Offer')}}</th>
-                <th scope="col">{{__('messages.operation')}}</th>
-
-            </tr>
-            </thead>
-            <tbody>
-
-            @foreach($viewOffer as $Offer)
-                <tr>
-                    <th scope="row">{{$Offer->id}}</th>
-                    <td>{{$Offer->name}}</td>
-                    <td>{{$Offer->price}}</td>
-                    <td>{{$Offer->details}}</td>
-                    <td><a href="{{url('offers/edit/'.$Offer->id)}}" class="btn btn-success">{{__('messages.update')}}</a></td>
-
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
-    @endif
 
 
+        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
 
+            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 text-center">
+                <div class="flex  justify-center items-center">
+                  <h1>{{__('messages.Add Your Offer')}}</h1>
+                </div>
+
+                @if(Session::has('success'))
+                <div class="alert alert-success" role="alert">
+                    {{__(Session::get('success'))}}
+                </div>
+                @endif
+
+
+                    <form method="POST" action="{{route('offers.update', $offer_select -> id)}}">
+                        @csrf
+{{--                        <input name="_token" value="{{csrf_token()}}">  ---> @csrf--}}
+
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">{{__('messages.Enter Offer AR')}}</label>
+                            <input type="text" class="form-control" name="name_ar" value="{{$offer_select->name_ar}}" placeholder="{{__('messages.Enter Offer AR')}}">
+                            <span class="text-danger">{{ $errors->first('name_ar') ?? '' }}</span>
+
+{{--                            @error('name')--}}
+{{--                            <small class="form-text text-danger">{{($massages)}}</small>--}}
+{{--                            @enderror--}}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">{{__('messages.Enter Offer EN')}}</label>
+                            <input type="text" class="form-control" name="name_en" value="{{$offer_select->name_en}}" placeholder="{{__('messages.Enter Offer EN')}}">
+                            <span class="text-danger">{{ $errors->first('name_en') ?? '' }}</span>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">{{__('messages.Price Offer')}}</label>
+                            <input type="text" class="form-control" name="price" value="{{$offer_select->price}}" placeholder="{{__('messages.Price Offer')}}">
+                            <span class="text-danger">{{ $errors->first('price') ?? '' }}</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">{{__('messages.Details Offer AR')}}</label>
+                            <input type="text" class="form-control" name="details_ar" value="{{$offer_select->details_ar}}"   placeholder="{{__('messages.Details Offer AR')}}">
+                            <span class="text-danger">{{ $errors->first('details_ar') ?? '' }}</span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">{{__('messages.Details Offer EN')}}</label>
+                            <input type="text" class="form-control" name="details_en" value="{{$offer_select->details_en}}"   placeholder="{{__('messages.Details Offer EN')}}">
+                            <span class="text-danger">{{ $errors->first('details_en') ?? '' }}</span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" >{{__('messages.Save Offer')}}</button>
+                    </form>
+
+            </div>
+        </div>
     </body>
 </html>

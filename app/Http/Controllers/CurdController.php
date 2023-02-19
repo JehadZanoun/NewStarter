@@ -107,6 +107,24 @@ class CurdController extends Controller
 
         }
 
+        public function editOffer($offer_id){
+
+        //Offer::findOrFail($offer_id);
+
+           $offer_Search = Offer::find($offer_id);
+           if(!$offer_Search)
+           return redirect()->back();
+         $offer_select = Offer::Select('id','name_ar', 'name_en', 'price', 'details_ar', 'details_en')->find($offer_id);
+         return view('offers.edite',compact('offer_select'));
+
+
+        }
+
+        public function updateOffer(OfferRequest $request){
+        //validation request
+       // update data
+        }
+
 
 
 }

@@ -31,6 +31,8 @@ return [
     "Details Offer EN"=>'Details Offer',
     "Details Offer"=>'Details Offer',
     "Save Offer"=>'Save Offer',
+    "operation"=>'operation',
+    "update"=>'Update',
 
     "Name"=>'Name',
     "success"=>'Offer added successfully',

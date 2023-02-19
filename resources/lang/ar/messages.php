@@ -28,6 +28,8 @@ return [
     "Details Offer"=>'تفاصيل العرض',
     "Details Offer AR"=>'تفاصيل العرض بالعربي',
     "Details Offer EN"=>'تفاصيل العرض بالإنجليزي',
+    "operation"=>'العمليات',
+    "update"=>'تحديث',
 
     "Save Offer"=>'حفظ العرض',
 
