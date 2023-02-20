@@ -14,7 +14,7 @@ return [
     */
 
     "offersName-Required" =>'Offer Name Required',
-    "offersName-Unique" =>'Display Name Must Not Be Required',
+    "offersName-Unique" =>'Display Name Must Not Be Unique',
     "offersPrice-Required" =>'Offer Price Required',
     "offersPrice"=>'Offer Price Must Be Numbers',
     "offersDetails" =>'Offer Details Required',
@@ -27,8 +27,8 @@ return [
     "success"=>'success',
 
     "Price Offer"=>'Price Offer',
-    "Details Offer AR"=>'Details Offer',
-    "Details Offer EN"=>'Details Offer',
+    "Details Offer AR"=>'Details Offer AR',
+    "Details Offer EN"=>'Details Offer EN',
     "Details Offer"=>'Details Offer',
     "Save Offer"=>'Save Offer',
     "operation"=>'operation',
@@ -36,6 +36,9 @@ return [
 
     "Name"=>'Name',
     "success"=>'Offer added successfully',
+    "success_update"=>'Update completed successfully',
+
+    "update Your Offer"=>'Update Your Offer',
 
 
 

@@ -56,12 +56,12 @@
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 text-center">
                 <div class="flex  justify-center items-center">
-                  <h1>{{__('messages.Add Your Offer')}}</h1>
+                  <h1>{{__('messages.update Your Offer')}}</h1>
                 </div>
 
-                @if(Session::has('success'))
+                @if(Session::has('success_update'))
                 <div class="alert alert-success" role="alert">
-                    {{__(Session::get('success'))}}
+                    {{__(Session::get('success_update'))}}
                 </div>
                 @endif
 

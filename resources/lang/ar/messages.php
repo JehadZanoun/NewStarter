@@ -36,6 +36,11 @@ return [
     "Name"=>'الاسم',
 
     "success"=>'تم إضافة العرض بنجاح',
+    "success_update"=>'تم التحديث بنجاح',
+
+
+    "update Your Offer"=>'تعديل العرض',
+
 
 
 

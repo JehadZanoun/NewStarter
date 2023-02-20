@@ -120,9 +120,26 @@ class CurdController extends Controller
 
         }
 
-        public function updateOffer(OfferRequest $request){
-        //validation request
+        public function updateOffer(OfferRequest $request, $offer_id){
+        //validation request in the offerRequest
+
+        //check is offer exists
+            $offer_Search = Offer::find($offer_id);
+            if(!$offer_Search)
+                return redirect()->back();
+
        // update data
+            $offer_Search -> update($request -> all());
+            return redirect()->back()->with(['success_update'=>'messages.success_update']);
+
+            //Another way
+
+            /* $offer_Search -> update([
+                'name_ar' => $request->name_ar,
+                'name_en' => $request->name_en,
+                'price' => $request->price,
+            ]); */
+
         }
 
 
