@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
+use App\Traits\OfferTriat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class CurdController extends Controller
 {
+    use OfferTriat;
 
     public function __construct()
     {
@@ -57,12 +59,14 @@ class CurdController extends Controller
             //return redirect()->back()->withErrors($validate)->withInput($request->all());
         //}
 
-        //save photo in the folder
-        $file_extension = $request->photo->getClientOriginalExtension();
-        $file_name = time().$file_extension;
-        $path = 'images/offers';
-        $file_name = time().'.'.$file_extension;
-        $request->photo->move($path, $file_name);
+        $file_name = $this->saveImage($request->photo, 'images/offers');
+
+        //another save photo in the folder
+//        $file_extension = $request->photo->getClientOriginalExtension();
+//        $file_name = time().$file_extension;
+//        $path = 'images/offers';
+//        $file_name = time().'.'.$file_extension;
+//        $request->photo->move($path, $file_name);
 
 
 
@@ -80,6 +84,16 @@ class CurdController extends Controller
         return redirect()->back()->with(['success' => 'messages.success']);
 
     }
+// Move to File OfferTriat *******
+
+//    protected function saveImage($photo,$folder) {
+//        $file_extension = $photo->getClientOriginalExtension();
+//        $path = $folder;
+//        $file_name = time().'.'.$file_extension;
+//        $photo->move($path, $file_name);
+//        return $file_name;
+//
+//    }
 
 
 //***********Move to OfferRequest ****************
