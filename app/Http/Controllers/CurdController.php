@@ -57,10 +57,18 @@ class CurdController extends Controller
             //return redirect()->back()->withErrors($validate)->withInput($request->all());
         //}
 
+        //save photo in the folder
+        $file_extension = $request->photo->getClientOriginalExtension();
+        $file_name = time().$file_extension;
+        $path = 'images/offers';
+        $file_name = time().'.'.$file_extension;
+        $request->photo->move($path, $file_name);
+
 
 
         //insert
         Offer::create([
+            'photo' => $file_name,
             'name_ar' => $request->name_ar,
             'name_en' => $request->name_en,
             'price' => $request->price,
@@ -130,7 +138,9 @@ class CurdController extends Controller
 
        // update data
             $offer_Search -> update($request -> all());
-            return redirect()->back()->with(['success_update'=>'messages.success_update']);
+//            return redirect()->back()->with(['success_update'=>'messages.success_update']);
+
+            return redirect()->route('offers.all');
 
             //Another way
 

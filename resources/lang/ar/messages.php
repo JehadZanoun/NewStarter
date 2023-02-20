@@ -40,6 +40,7 @@ return [
 
 
     "update Your Offer"=>'تعديل العرض',
+    "photo"=>'اختر صورة',
 
 
 

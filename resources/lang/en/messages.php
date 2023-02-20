@@ -39,6 +39,7 @@ return [
     "success_update"=>'Update completed successfully',
 
     "update Your Offer"=>'Update Your Offer',
+    "photo"=>'choose photo',
 
 
 
