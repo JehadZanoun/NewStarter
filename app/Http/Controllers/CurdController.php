@@ -166,6 +166,10 @@ class CurdController extends Controller
 
         }
 
+        public function getVideo() {
+
+        }
+
 
 
 }
