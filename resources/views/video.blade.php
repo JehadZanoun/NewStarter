@@ -27,11 +27,13 @@
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
 
-                    Video Viwer (70)
+                    Video Viwer ({{$viedo -> viewers}})
+
 
                 </div>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/SlrTIg8sngg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
             </div>
         </div>

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\VideoViwer;
 use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
+use App\Models\Viedo;
 use App\Traits\OfferTriat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -167,6 +169,10 @@ class CurdController extends Controller
         }
 
         public function getVideo() {
+
+            $viedo = Viedo::first();
+            event(new VideoViwer($viedo));
+        return view('video')-> with('viedo', $viedo);
 
         }
 

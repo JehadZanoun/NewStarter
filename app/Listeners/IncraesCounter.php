@@ -13,7 +13,7 @@ class IncraesCounter
      *
      * @return void
      */
-    public function __construct(VideoViwer $event)
+    public function __construct()
     {
         //
     }
@@ -24,8 +24,12 @@ class IncraesCounter
      * @param  object  $event
      * @return void
      */
-    public function handle($event)
+    public function handle(VideoViwer $event)
     {
-        //
+        $this->updateviwer($event->Viedo);
+    }
+         function updateviwer($Viedo) {
+             $Viedo->viewers =  $Viedo->viewers + 1;
+             $Viedo->save();
     }
 }

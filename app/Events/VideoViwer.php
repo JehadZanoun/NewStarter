@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Viedo;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -19,9 +20,16 @@ class VideoViwer
      *
      * @return void
      */
-    public function __construct()
+
+    public $viedo;
+    /**
+     * @var Viedo
+     */
+    public $Viedo;
+
+    public function __construct(Viedo $video)
     {
-        //
+        $this->viedo = $video;
     }
 
     /**
