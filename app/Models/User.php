@@ -44,6 +44,15 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    ################# Begin relations ###########################
+
+    public function phone(){
+        return $this-> hasOne( 'App\Models\mobile', 'user_id');
+    }
+
+
+    ################# End relations ###########################
+
 
 
 }

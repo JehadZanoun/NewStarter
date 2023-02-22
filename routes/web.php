@@ -43,6 +43,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
     });
 
     Route::get('youtube','CurdController@getVideo');
+    ##################### End Authentication && Guards  ##################################
+
+    ##################### Begin Routes Relation  ONe to ONE  ##################################
+
+    Route::get('has-one', 'Relation\RelationController@hasOneRelation');
+
+
+        ##################### End Routes Relation  ##################################
 
 
 });
