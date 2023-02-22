@@ -23,8 +23,8 @@ class CurdController extends Controller
 
 
     public function getOffers() {
-
-       return Offer:: get();
+dd(1);
+       return Offer:: all();
     }
 
   /*  public function store() {
@@ -125,7 +125,7 @@ class CurdController extends Controller
                  'name_'. LaravelLocalization::getCurrentLocale().' as name',
                  'details_'. LaravelLocalization::getCurrentLocale().' as details',
 
-                 'price', 'details_ar')->get();
+                 'price','photo', 'details_ar')->get();
 
         return view('offers.all', compact('viewOffer'));
 
@@ -140,6 +140,22 @@ class CurdController extends Controller
            return redirect()->back();
          $offer_select = Offer::Select('id','name_ar', 'name_en', 'price', 'details_ar', 'details_en')->find($offer_id);
          return view('offers.edite',compact('offer_select'));
+
+
+        }
+        public function delete($offer_id) {
+        // check if offer id exists
+           $offer = Offer::find($offer_id);
+           if(!$offer);
+           return redirect()->back()->with(['Error' => __('messages.offerError')]);
+
+            $offer-> delete();
+            return redirect() ->route('offers.delete',$offer_id)->with(['DeleteSuccess' =>__('messages.DeleteSuccess')]);
+
+
+
+
+
 
 
         }

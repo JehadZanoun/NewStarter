@@ -41,6 +41,10 @@ return [
 
     "update Your Offer"=>'تعديل العرض',
     "photo"=>'اختر صورة',
+    'offerPhoto'=>'صورة العرض',
+    "delete"=>'حذف',
+    "offerError"=>'العرض غير موجود',
+    "DeleteSuccess"=>'تم الحذف',
 
 
 

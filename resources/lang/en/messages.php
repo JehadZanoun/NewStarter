@@ -40,6 +40,10 @@ return [
 
     "update Your Offer"=>'Update Your Offer',
     "photo"=>'choose photo',
+    "offerPhoto"=>'Offer Photo',
+    "delete"=>'Delete',
+    "offerError"=>'Not Found Offer',
+    "DeleteSuccess"=>'Delete Success',
 
 
 

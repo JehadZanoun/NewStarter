@@ -32,6 +32,10 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            @if(session::has('DeleteSuccess'))
+
+                
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
@@ -58,6 +62,7 @@
                 <th scope="col">{{__('messages.Name Offer')}}</th>
                 <th scope="col">{{__('messages.Price Offer')}}</th>
                 <th scope="col">{{__('messages.Details Offer')}}</th>
+                <th scope="col">{{__('messages.offerPhoto')}}</th>
                 <th scope="col">{{__('messages.operation')}}</th>
 
             </tr>
@@ -70,7 +75,9 @@
                     <td>{{$Offer->name}}</td>
                     <td>{{$Offer->price}}</td>
                     <td>{{$Offer->details}}</td>
+                    <td><img style="width: 65px ; height: 50px" src="{{asset('images/offers').'/'.$Offer->photo}}"></td>
                     <td><a href="{{url('offers/edit/'.$Offer->id)}}" class="btn btn-success">{{__('messages.update')}}</a></td>
+                    <td><a href="{{route('offers.delete',$Offer->id)}}" class="btn btn-danger">{{__('messages.delete')}}</a></td>
 
                 </tr>
             @endforeach
@@ -83,8 +90,10 @@
                 <th scope="col">#</th>
                 <th scope="col">{{__('messages.Name Offer')}}</th>
                 <th scope="col">{{__('messages.Price Offer')}}</th>
-                <th scope="col">{{__('messages.Details Offer')}}</th>
+                <th scope="col">{{__('messages.Details Offer')}}
+                <th scope="col">{{__('messages.offerPhoto')}}</th>
                 <th scope="col">{{__('messages.operation')}}</th>
+
 
             </tr>
             </thead>
@@ -96,7 +105,10 @@
                     <td>{{$Offer->name}}</td>
                     <td>{{$Offer->price}}</td>
                     <td>{{$Offer->details}}</td>
+                    <td><img style="width: 65px ; height: 50px" src="{{asset('images/offers').'/'.$Offer->photo}}"></td>
                     <td><a href="{{url('offers/edit/'.$Offer->id)}}" class="btn btn-success">{{__('messages.update')}}</a></td>
+                    <td><a href="{{route('offers.delete',$Offer->id)}}" class="btn btn-danger">{{__('messages.delete')}}</a></td>
+
 
                 </tr>
             @endforeach
