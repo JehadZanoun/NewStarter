@@ -26,10 +26,10 @@ class IncraesCounter
      */
     public function handle(VideoViwer $event)
     {
-        $this->updateviwer($event->Viedo);
+        $this->updateviwer($event->video);
     }
-         function updateviwer($Viedo) {
-             $Viedo->viewers =  $Viedo->viewers + 1;
-             $Viedo->save();
+         function updateviwer($video) {
+             $video->viewers =  $video->viewers + 1;
+             $video->save();
     }
 }

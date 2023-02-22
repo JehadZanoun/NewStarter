@@ -21,15 +21,14 @@ class VideoViwer
      * @return void
      */
 
-    public $viedo;
     /**
      * @var Viedo
      */
-    public $Viedo;
+    public $video;
 
     public function __construct(Viedo $video)
     {
-        $this->viedo = $video;
+        $this->video = $video;
     }
 
     /**
