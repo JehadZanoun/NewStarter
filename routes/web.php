@@ -45,6 +45,21 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
 
     Route::get('youtube','CurdController@getVideo');
 
+
+    ##################### Begin Ajax Routes  ##################################
+
+    Route::group(['prefix' => 'ajax-offers'], function(){
+        route::get('create','offerController@create');
+        route::post('store','offerController@store') ->name('ajax.offer.store');
+
+    });
+
+
+    ##################### End Ajax Routes  ##################################
+
+
+
+
     ##################### End Authentication && Guards  ##################################
 
     ##################### Begin Routes Relation  ONe to ONE  ##################################
