@@ -146,17 +146,18 @@ dd(1);
         public function delete($offer_id) {
         // check if offer id exists
            $offer = Offer::find($offer_id);
-           if(!$offer);
-           return redirect()->back()->with(['Error' => __('messages.offerError')]);
+           if (!$offer) {
+               return redirect()->back()->with(['Error' => __('messages.offerError')]);
 
-            $offer-> delete();
-            return redirect() ->route('offers.delete',$offer_id)->with(['DeleteSuccess' =>__('messages.DeleteSuccess')]);
+           }elseif($offer){
 
+               $offer ->delete();
 
+           }
 
-
-
-
+            return redirect()
+                ->route('offers.all')
+                ->with(['DeleteSuccess' =>__('messages.DeleteSuccess')]);
 
         }
 

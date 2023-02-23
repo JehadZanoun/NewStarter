@@ -18,6 +18,7 @@ return [
     "offersPrice-Required" =>'Offer Price Required',
     "offersPrice"=>'Offer Price Must Be Numbers',
     "offersDetails" =>'Offer Details Required',
+    "photoRequired"=>'Required Photo',
 
     "Add Your Offer"=>'Add Your Offer',
     "Enter Offer AR"=>'Offer Name Ar',

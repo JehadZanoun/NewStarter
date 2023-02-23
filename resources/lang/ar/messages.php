@@ -18,6 +18,7 @@ return [
     "offersPrice-Required" =>'سعر العرض مطللوب',
     "offersPrice"=>'سعر العرض يجب ان يكون ارقام',
     "offersDetails"=>'تفاصيل العرض مطلوبة',
+    "photoRequired"=>'الصورة مطلوبة',
 
     "Add Your Offer"=>'إضافة عرض جديد',
     "Enter Offer AR"=>' اسم العرض بالعربي',
@@ -44,7 +45,7 @@ return [
     'offerPhoto'=>'صورة العرض',
     "delete"=>'حذف',
     "offerError"=>'العرض غير موجود',
-    "DeleteSuccess"=>'تم الحذف',
+    "DeleteSuccess"=>'تم حذف العرض بنجاح',
 
 
 

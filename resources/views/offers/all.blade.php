@@ -28,14 +28,12 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            @if(session::has('DeleteSuccess'))
 
-                
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
@@ -47,13 +45,26 @@
 
 
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+
             </div>
         </div>
     </nav>
+
+    @if(Session::has('DeleteSuccess'))
+        <div class="alert alert-danger flex  justify-center items-center" role="alert">
+            {{__(Session::get('DeleteSuccess'))}}
+        </div>
+    @endif
+
+    @if(Session::has('Error'))
+        <div class="alert alert-danger flex  justify-center items-center" role="alert">
+            {{__(Session::get('Error'))}}
+        </div>
+    @endif
+
+
+
+
     @if(app()->getLocale()=='ar')
         <table class="table" style="direction: rtl">
             <thead>
@@ -76,8 +87,8 @@
                     <td>{{$Offer->price}}</td>
                     <td>{{$Offer->details}}</td>
                     <td><img style="width: 65px ; height: 50px" src="{{asset('images/offers').'/'.$Offer->photo}}"></td>
-                    <td><a href="{{url('offers/edit/'.$Offer->id)}}" class="btn btn-success">{{__('messages.update')}}</a></td>
-                    <td><a href="{{route('offers.delete',$Offer->id)}}" class="btn btn-danger">{{__('messages.delete')}}</a></td>
+                    <td><a href="{{url('offers/edit/'.$Offer->id)}}" class="btn btn-success">{{__('messages.update')}}</a>
+                    <a href="{{route('offers.delete',$Offer->id)}}" class="btn btn-danger">{{__('messages.delete')}}</a></td>
 
                 </tr>
             @endforeach
@@ -106,8 +117,8 @@
                     <td>{{$Offer->price}}</td>
                     <td>{{$Offer->details}}</td>
                     <td><img style="width: 65px ; height: 50px" src="{{asset('images/offers').'/'.$Offer->photo}}"></td>
-                    <td><a href="{{url('offers/edit/'.$Offer->id)}}" class="btn btn-success">{{__('messages.update')}}</a></td>
-                    <td><a href="{{route('offers.delete',$Offer->id)}}" class="btn btn-danger">{{__('messages.delete')}}</a></td>
+                    <td><a href="{{url('offers/edit/'.$Offer->id)}}" class="btn btn-success">{{__('messages.update')}}</a>
+                    <a href="{{route('offers.delete',$Offer->id)}}" class="btn btn-danger">{{__('messages.delete')}}</a></td>
 
 
                 </tr>
