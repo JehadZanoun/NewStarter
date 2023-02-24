@@ -33,9 +33,18 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            @if(session::has('DeleteSuccess'))
+            @if(Session::has('success'))
+                <div class="alert alert-success" role="alert">
+                    {{__(Session::get('success'))}}
+                </div>
+            @endif
 
-                
+        @if(Session::has('error'))
+                <div class="alert alert-success" role="alert">
+                    {{__(Session::get('error'))}}
+                </div>
+            @endif
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
