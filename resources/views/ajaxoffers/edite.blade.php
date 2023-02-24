@@ -28,6 +28,7 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -42,7 +43,10 @@
 
 
                 </ul>
-
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
             </div>
         </div>
     </nav>
@@ -52,30 +56,23 @@
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 text-center">
                 <div class="flex  justify-center items-center">
-                  <h1>{{__('messages.Add Your Offer')}}</h1>
+                  <h1>{{__('messages.update Your Offer')}}</h1>
                 </div>
 
-                @if(Session::has('success'))
+                @if(Session::has('success_update'))
                 <div class="alert alert-success" role="alert">
-                    {{__(Session::get('success'))}}
+                    {{__(Session::get('success_update'))}}
                 </div>
                 @endif
 
 
-                    <form method="POST" action="{{route('offers.store')}}" enctype="multipart/form-data">
+                    <form method="POST" action="{{route('offers.update', $offer_select -> id)}}">
                         @csrf
 {{--                        <input name="_token" value="{{csrf_token()}}">  ---> @csrf--}}
 
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">{{__('messages.photo')}}</label>
-                            <input type="file" class="form-control" name="photo" value="{{('photo')}}">
-                            <span class="text-danger">{{ $errors->first('photo') ?? '' }}</span>
-
-                        </div>
-
-                        <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">{{__('messages.Enter Offer AR')}}</label>
-                            <input type="text" class="form-control" name="name_ar" value="{{ old('name') }}" placeholder="{{__('messages.Enter Offer AR')}}">
+                            <input type="text" class="form-control" name="name_ar" value="{{$offer_select->name_ar}}" placeholder="{{__('messages.Enter Offer AR')}}">
                             <span class="text-danger">{{ $errors->first('name_ar') ?? '' }}</span>
 
 {{--                            @error('name')--}}
@@ -85,25 +82,25 @@
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">{{__('messages.Enter Offer EN')}}</label>
-                            <input type="text" class="form-control" name="name_en" placeholder="{{__('messages.Enter Offer EN')}}">
+                            <input type="text" class="form-control" name="name_en" value="{{$offer_select->name_en}}" placeholder="{{__('messages.Enter Offer EN')}}">
                             <span class="text-danger">{{ $errors->first('name_en') ?? '' }}</span>
 
                         </div>
 
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">{{__('messages.Price Offer')}}</label>
-                            <input type="text" class="form-control" name="price" placeholder="{{__('messages.Price Offer')}}">
+                            <input type="text" class="form-control" name="price" value="{{$offer_select->price}}" placeholder="{{__('messages.Price Offer')}}">
                             <span class="text-danger">{{ $errors->first('price') ?? '' }}</span>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">{{__('messages.Details Offer AR')}}</label>
-                            <input type="text" class="form-control" name="details_ar"  placeholder="{{__('messages.Details Offer AR')}}">
+                            <input type="text" class="form-control" name="details_ar" value="{{$offer_select->details_ar}}"   placeholder="{{__('messages.Details Offer AR')}}">
                             <span class="text-danger">{{ $errors->first('details_ar') ?? '' }}</span>
                         </div>
 
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">{{__('messages.Details Offer EN')}}</label>
-                            <input type="text" class="form-control" name="details_en" placeholder="{{__('messages.Details Offer EN')}}">
+                            <input type="text" class="form-control" name="details_en" value="{{$offer_select->details_en}}"   placeholder="{{__('messages.Details Offer EN')}}">
                             <span class="text-danger">{{ $errors->first('details_en') ?? '' }}</span>
                         </div>
 

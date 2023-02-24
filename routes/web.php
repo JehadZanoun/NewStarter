@@ -39,11 +39,26 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
 
         Route::get('edit/{offer_id}', 'CurdController@editOffer');
         Route::post('update/{offer_id}', 'CurdController@updateOffer') -> name('offers.update');
-        Route::post('delete/{offer_id}', 'CurdController@delete') -> name('offers.delete');
+        Route::get('delete/{offer_id}', 'CurdController@delete') -> name('offers.delete');
 
     });
 
     Route::get('youtube','CurdController@getVideo');
+
+
+    ##################### Begin Ajax Routes  ##################################
+
+    Route::group(['prefix' => 'ajax-offers'], function(){
+        route::get('create','offerController@create');
+        route::post('store','offerController@store') ->name('ajax.offer.store');
+
+    });
+
+
+    ##################### End Ajax Routes  ##################################
+
+
+
 
     ##################### End Authentication && Guards  ##################################
 
