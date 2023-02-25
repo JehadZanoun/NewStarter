@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Offer;
 use App\Traits\OfferTriat;
 use Illuminate\Http\Request;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class offerController extends Controller
 {
@@ -33,8 +34,6 @@ class offerController extends Controller
 
         ]);
 
-
-
         if($offer) {
             return response()-> json([
                 'status'=>true,
@@ -50,10 +49,15 @@ class offerController extends Controller
             ]);
         }
 
-
-
-
-
-
     }
+
+        public function all() {
+            $viewOffer  = Offer::Select('id',
+                'name_'. LaravelLocalization::getCurrentLocale().' as name',
+                'details_'. LaravelLocalization::getCurrentLocale().' as details',
+
+                'price','photo', 'details_ar')->limit(10)->get();
+
+            return view('ajaxoffers.all', compact('viewOffer'));
+        }
 }
