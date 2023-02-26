@@ -54,8 +54,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
         route::get('all', 'offerController@all') ->name('ajax.offer.all');
         route::post('delete', 'offerController@delete') ->name('ajax.offer.delete');
 
-        Route::get('edit/{offer_id}', 'CurdController@edit') ->name('ajax.offer.edit');
-        Route::post('update', 'CurdController@update') -> name('ajax.offer.update');
+        route::get('edit/{offer_id}', 'offerController@edit')->name('ajax.offer.edit');
+        route::post('update', 'offerController@update') -> name('ajax.offer.update');
 
     });
 

@@ -23,7 +23,7 @@ class CurdController extends Controller
 
 
     public function getOffers() {
-dd(1);
+
        return Offer:: all();
     }
 

@@ -64,33 +64,37 @@ class offerController extends Controller
         public function delete(Request $request) {
             $offer = Offer::find($request->id);
 
-            if(!$offer);
+            if(!$offer) {
 
-            $offer-> delete();
+                $offer->delete();
 
-            return response()-> json([
-                'status'=>true,
-                'msg'=>'تم الحذف بنجاح',
-                'id'=> $request->id,
+                return response()->json([
+                    'status' => true,
+                    'msg' => 'تم الحذف بنجاح',
+                    'id' => $request->id,
 
-            ]);
+                ]);
+            }
 
         }
 
-    public function editOffer(Request $request){
+    public function edit(Request $request){
 
         //Offer::findOrFail($offer_id);
 
         $offer_Search = Offer::find($request->offer_id);
-        if(!$offer_Search)
+        if(!$offer_Search) {
 
-            return response()-> json([
-                'status'=>false,
-                'msg'=>'العرض غير موجود',
+            return response()->json([
+                'status' => false,
+                'msg' => 'العرض غير موجود',
             ]);
 
-        $offer_select = Offer::Select('id','name_ar', 'name_en', 'price', 'details_ar', 'details_en')->find($request -> offer_id);
-        return view('ajaxoffers.edite',compact('offer_select'));
+        }
+            $offer_select = Offer::Select('id', 'name_ar', 'name_en', 'price', 'details_ar', 'details_en')->find($request->offer_id);
+
+            return view('ajaxoffers.edit', compact('offer_select'));
+
 
 
     }

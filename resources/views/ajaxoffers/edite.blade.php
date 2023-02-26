@@ -66,7 +66,7 @@
                 @endif
 
 
-                    <form method="POST" id="offerFormUpdate" action="{{route('offers.update', $offer_select -> id)}}">
+                    <form method="POST" id="offerFormUpdate" action="" enctype="multipart/form-data">
                         @csrf
 {{--                        <input name="_token" value="{{csrf_token()}}">  ---> @csrf--}}
 

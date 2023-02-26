@@ -86,7 +86,7 @@
                 <td>
                     <a href="{{url('offers/edit/'.$Offer->id)}}" class="btn btn-success">{{__('messages.update')}}</a>
                     <a href="{{route('offers.delete',$Offer->id)}}" class="btn btn-danger">{{__('messages.delete')}}</a>
-                    <a href="" offer_id="{{$Offer->id}}" class="delete_btn btn btn-danger">{{__('messages.deleteAjax')}}</a>
+                    <a href="offer_id={{$Offer->id}}" class="delete_btn btn btn-danger">{{__('messages.deleteAjax')}}</a>
                 </td>
 
             </tr>
@@ -120,7 +120,7 @@
                     <a href="{{url('offers/edit/'.$Offer->id)}}" class="btn btn-success">{{__('messages.update')}}</a>
                     <a href="{{route('offers.delete',$Offer->id)}}" class="btn btn-danger">{{__('messages.delete')}}</a>
                     <a href="" offer_id="{{$Offer->id}}" class="delete_btn btn btn-danger">{{__('messages.deleteAjax')}}</a>
-                    <a href="{{route('ajax.offer.edit', $Offer->id )}}" class="btn btn-success">تعديل</a>
+                    <a href="{{route('ajax.offer.edit', $Offer->id)}}" class="btn btn-success">تعديل</a>
 
                 </td>
 
