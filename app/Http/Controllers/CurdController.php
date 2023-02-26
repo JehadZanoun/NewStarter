@@ -72,6 +72,7 @@ dd(1);
 
 
 
+
         //insert
         Offer::create([
             'photo' => $file_name,

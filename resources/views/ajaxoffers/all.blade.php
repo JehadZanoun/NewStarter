@@ -1,10 +1,9 @@
 
-@extends('layouts.app');
+@extends('layouts.app')
 
-@section('content');
+@section('content')
 
 
-{{--<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">--}}
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,17 +53,10 @@
     </div>
 </nav>
 
-@if(Session::has('DeleteSuccess'))
-    <div class="alert alert-danger flex  justify-center items-center" role="alert">
-        {{__(Session::get('DeleteSuccess'))}}
-    </div>
-@endif
+        <div id="success_msg" class="alert alert-success text-center" style="display:none" >
+                 <h3>تم الحذف بنجاح</h3>
+        </div>
 
-@if(Session::has('Error'))
-    <div class="alert alert-danger flex  justify-center items-center" role="alert">
-        {{__(Session::get('Error'))}}
-    </div>
-@endif
 
 
 
@@ -85,14 +77,17 @@
         <tbody>
 
         @foreach($viewOffer as $Offer)
-            <tr>
+            <tr class="offerRow{{$Offer->id}}">
                 <th scope="row">{{$Offer->id}}</th>
                 <td>{{$Offer->name}}</td>
                 <td>{{$Offer->price}}</td>
                 <td>{{$Offer->details}}</td>
                 <td><img style="width: 65px ; height: 50px" src="{{asset('images/offers').'/'.$Offer->photo}}"></td>
-                <td><a href="{{url('offers/edit/'.$Offer->id)}}" class="btn btn-success">{{__('messages.update')}}</a>
-                    <a href="{{route('offers.delete',$Offer->id)}}" class="btn btn-danger">{{__('messages.delete')}}</a></td>
+                <td>
+                    <a href="{{url('offers/edit/'.$Offer->id)}}" class="btn btn-success">{{__('messages.update')}}</a>
+                    <a href="{{route('offers.delete',$Offer->id)}}" class="btn btn-danger">{{__('messages.delete')}}</a>
+                    <a href="" offer_id="{{$Offer->id}}" class="delete_btn btn btn-danger">{{__('messages.deleteAjax')}}</a>
+                </td>
 
             </tr>
         @endforeach
@@ -115,15 +110,17 @@
         <tbody>
 
         @foreach($viewOffer as $Offer)
-            <td>
+            <tr class="offerRow{{$Offer->id}}">
                 <th scope="row">{{$Offer->id}}</th>
                 <td>{{$Offer->name}}</td>
                 <td>{{$Offer->price}}</td>
                 <td>{{$Offer->details}}</td>
                 <td><img style="width: 65px ; height: 50px" src="{{asset('images/offers').'/'.$Offer->photo}}"></td>
-                <td><a href="{{url('offers/edit/'.$Offer->id)}}" class="btn btn-success">{{__('messages.update')}}</a>
-                    <a href="{{route('offers.delete',$Offer->id)}}" class="btn btn-danger">{{__('messages.delete')}}</a></td>
-                <td><a href="" id="delete_btn" class="btn btn-danger">حذف اجاكس</a></td>
+                <td>
+                    <a href="{{url('offers/edit/'.$Offer->id)}}" class="btn btn-success">{{__('messages.update')}}</a>
+                    <a href="{{route('offers.delete',$Offer->id)}}" class="btn btn-danger">{{__('messages.delete')}}</a>
+                    <a href="" offer_id="{{$Offer->id}}" class="delete_btn btn btn-danger">{{__('messages.deleteAjax')}}</a>
+            </td>
 
 
             </tr>
@@ -137,27 +134,25 @@
 
 @section('scripts')
     <script>
-        $(document).on('click', '#delete_btn', function (e){
+        $(document).on('click', '.delete_btn', function (e){
             e.preventDefault();
+           var offer_id =  $(this).attr('offer_id');
 
             $.ajax({
                 type: 'post',
-                url: '{{route('ajax.offer.store')}}',
+                url: '{{route('ajax.offer.delete')}}',
                 data: {
-                    '_token': "{{csrf_token()}}"
+                    '_token': "{{csrf_token()}}",
+                    id: offer_id,
                 },
-                processData: false,
-                contentType: false,
-                cache: false,
-
                 success: function (data){
 
                     if(data.status == true){
 
                         $('#success_msg').show();
 
-                        // alert(data.msg)
                     }
+                    $('.offerRow'+data.id).remove();
 
                 },error: function (reject){
 
@@ -175,31 +170,5 @@
 
 
 
-        {{--$(document).on('click', '#save_offer', function (e){--}}
-        {{--    e.preventDefault();--}}
-
-        {{--    $.ajax({--}}
-        {{--        type: 'post',--}}
-        {{--        url: '{{route('ajax.offer.store')}}',--}}
-        {{--        data: {--}}
-        {{--            '_token': '{{csrf_token()}}',--}}
-        {{--            'name_ar': $("input[name='name_ar']").val(),--}}
-        {{--            'name_en':$("input[name='name_en']").val(),--}}
-        {{--            'price':$("input[name='price']").val(),--}}
-        {{--            'details_ar':$("input[name='details_ar']").val(),--}}
-        {{--            'details_en':$("input[name='details_en']").val(),--}}
-        {{--     'photo':$("input[name='photo']").val(),--}}
-
-
-        {{--},--}}
-        {{--        success: function (data){--}}
-
-        {{--        },error: function (reject){--}}
-
-        {{--        }--}}
-
-        {{--    });--}}
-
-        {{--});--}}
     </script>
 @stop

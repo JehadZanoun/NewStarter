@@ -46,6 +46,9 @@ return [
     "delete"=>'حذف',
     "offerError"=>'العرض غير موجود',
     "DeleteSuccess"=>'تم حذف العرض بنجاح',
+    'deleteAjax'=>'حذف اجاكس',
+
+
 
 
 

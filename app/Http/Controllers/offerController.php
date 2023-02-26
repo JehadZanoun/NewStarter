@@ -60,4 +60,21 @@ class offerController extends Controller
 
             return view('ajaxoffers.all', compact('viewOffer'));
         }
+
+        public function delete(Request $request) {
+            $offer = Offer::find($request->id);
+
+            if(!$offer);
+
+            $offer-> delete();
+
+            return response()-> json([
+                'status'=>true,
+                'msg'=>'تم الحذف بنجاح',
+                'id'=> $request->id,
+
+            ]);
+
+
+        }
 }

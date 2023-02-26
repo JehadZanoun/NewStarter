@@ -45,6 +45,7 @@ return [
     "delete"=>'Delete',
     "offerError"=>'Not Found Offer',
     "DeleteSuccess"=>'Delete Success',
+    "deleteAjax"=>'Delete Ajax',
 
 
 
