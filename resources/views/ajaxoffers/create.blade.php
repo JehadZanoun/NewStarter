@@ -26,7 +26,7 @@
             @endif
 
 
-            <form id="offerForm" method="POST" action="{{route('offers.store')}}" enctype="multipart/form-data">
+            <form id="offerForm" method="POST" action="{{route('ajax.offer.create')}}" enctype="multipart/form-data">
                 @csrf
                 {{--                        <input name="_token" value="{{csrf_token()}}">  ---> @csrf--}}
 
@@ -71,7 +71,7 @@
                     <span class="text-danger">{{ $errors->first('details_en') ?? '' }}</span>
                 </div>
 
-                <button id="save_offer" class="btn btn-primary" >{{__('messages.Save Offer')}}</button>
+                <button id="save_offer" class="btn btn-primary">{{__('messages.Save Offer')}}</button>
             </form>
 
         </div>
@@ -88,7 +88,7 @@
             $.ajax({
                 type: 'post',
                 enctype: 'multipart/form-data',
-                url: '{{route('ajax.offer.delete')}}',
+                url: '{{route('ajax.offer.store')}}',
                 data: formData,
                 processData: false,
                 contentType: false,
@@ -96,12 +96,12 @@
 
                 success: function (data){
 
-                    if(data.status == true){
+                    if(data.status == true)
 
                         $('#success_msg').show();
 
                        // alert(data.msg)
-                    }
+
 
                 },error: function (reject){
 
