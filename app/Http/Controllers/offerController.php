@@ -105,7 +105,6 @@ class offerController extends Controller
 
     public function update(Request $request)
     {
-        //validation request in the offerRequest
 
         //check is offer exists
         $offer_Search = Offer::find($request->offer_id);
@@ -122,6 +121,7 @@ class offerController extends Controller
             'msg' => 'تم التحديث بنجاح',
 
         ]);
+
 
 
     }
