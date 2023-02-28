@@ -69,7 +69,7 @@
                     <form method="POST" id="offerFormUpdate" action="" enctype="multipart/form-data">
                         @csrf
 {{--                        <input name="_token" value="{{csrf_token()}}">  ---> @csrf--}}
-                        <input type="text" class="form-control" name="offer_id" value="{{$offer_select->id}}">
+                        <input type="text" class="form-control" style="display: none" name="offer_id" value="{{$offer_select->id}}">
 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">{{__('messages.Enter Offer AR')}}</label>
