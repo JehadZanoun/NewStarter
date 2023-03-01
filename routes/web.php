@@ -31,6 +31,18 @@ Route::get('fillable', 'CurdController@getOffers');
 
 Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function (){
 
+    Route::get('/', function () {
+        return view('Home');
+    });
+
+    Auth::routes(['verify' => true]);
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home') -> middleware('verified');
+
+
+
+
+
     Route::group(['prefix' => 'offers'], function() {
         // Route::get('store','CurdController@store');
     Route::get('created', 'CurdController@create');
@@ -63,6 +75,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
     ##################### End Ajax Routes  ##################################
 
 
+
+    ##################### Begin Authentication && Guards  ##################################
+
+    Route::get('adelts','Auth\customAuthcontroller@adelt')->middleware('CheckAge');
 
 
     ##################### End Authentication && Guards  ##################################
