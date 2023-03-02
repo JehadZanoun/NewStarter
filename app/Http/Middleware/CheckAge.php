@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckAge
 {
@@ -15,7 +16,15 @@ class CheckAge
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
     public function handle(Request $request, Closure $next)
+
     {
+        // Login Middleware
+        //Auth::user()->id;
+        Auth::user()->age;
+        if($request -> age < 15) {
+            return redirect()->back();
+        }
+
         return $next($request);
     }
 }

@@ -78,7 +78,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
 
     ##################### Begin Authentication && Guards  ##################################
 
-    Route::get('adelts','Auth\customAuthcontroller@adelt')->middleware('CheckAge');
+    Route::group(['middleware' => 'CheckAge', 'namespace'=>'Auth'], function() {
+
+        Route::get('adults', 'customAuthcontroller@adult')->name('adult');
+    });
 
 
     ##################### End Authentication && Guards  ##################################

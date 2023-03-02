@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class customAuthcontroller extends Controller
 {
-    public function adelt() {
+    public function adult() {
 
         return view('customAuth.index');
     }
