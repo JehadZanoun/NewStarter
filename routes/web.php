@@ -83,15 +83,27 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
         Route::get('adults', 'customAuthcontroller@adult')->name('adult');
     });
 
+    Route::get('site', 'customAuthcontroller@site')->name('site');
+    Route::get('admin', 'customAuthcontroller@admin')->name('admin');
+
+
 
     ##################### End Authentication && Guards  ##################################
 
     ##################### Begin Routes Relation  ONe to ONE  ##################################
 
     Route::get('has-one', 'Relation\RelationController@hasOneRelation');
+    Route::get('has-one-revers', 'Relation\RelationController@hasOneRelationRevers');
+
+    Route::get('get-user-has-phone', 'Relation\RelationController@getUserHasPhone');
+    Route::get('get-user-has-phone-with-condition', 'Relation\RelationController@getUserHasPhoneWithCondition');
+
+    Route::get('get-user-not-has-phone', 'Relation\RelationController@getUserNotHasPhone');
 
 
-        ##################### End Routes Relation  ##################################
+
+
+    ##################### End Routes Relation  ##################################
 
 
 });

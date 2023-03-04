@@ -11,4 +11,10 @@ class customAuthcontroller extends Controller
 
         return view('customAuth.index');
     }
+
+    public function site() {
+
+        return view('site');
+    }
+
 }

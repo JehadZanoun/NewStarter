@@ -16,7 +16,11 @@ class mobile extends Model
     ################# Begin relations ONe to ONE  ###########################
 
     public function user(){
-        return $this->belongsTo('App\Models\mobile', 'user_id');
+      // return $this->belongsTo('App\Models\mobile', 'user_id');
+
+                return $this->belongsTo('App\Models\User', 'user_id');
+
+
     }
 
 
