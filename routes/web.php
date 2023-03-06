@@ -101,9 +101,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
     Route::get('get-user-not-has-phone', 'Relation\RelationController@getUserNotHasPhone');
 
 
-
-
     ##################### End Routes Relation  ##################################
+
+    ##################### Begin ONe Many Relationship  ##################################
+    Route::get('hospital-has-many', 'Relation\RelationController@getHospitalDoctors');
+
+
+    ##################### End ONe Many Relationship  ##################################
+
+
 
 
 });

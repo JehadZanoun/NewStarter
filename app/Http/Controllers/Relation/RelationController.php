@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Relation;
 
 use App\Http\Controllers\Controller;
+use App\Models\Doctor;
+use App\Models\Hosbital;
 use App\Models\mobile;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -65,6 +67,30 @@ class RelationController extends Controller
     }
     public function getUserNotHasPhone(){
         return User::whereDoesntHave('phone')->get();
+    }
+
+    ##################### Begin ONe Many Relationship  ##################################
+
+    public function getHospitalDoctors() {
+//       $hospital =  Hosbital::find(1);
+        //Hosbital::Where('id')->first();
+        //Hosbital::first();
+        //return $hospital-> doctors;
+
+
+        $hospital =  Hosbital::with('doctors')->find(1);
+        //return $hospital;
+        //return $hospital->name;
+
+        $doctors = $hospital-> doctors;
+        foreach ($doctors as $doctor){
+           echo $doctor -> name.'<br>';
+        }
+
+       $doctor = Doctor::find(3);
+        return $doctor->hospital;
+
+
     }
 
 
