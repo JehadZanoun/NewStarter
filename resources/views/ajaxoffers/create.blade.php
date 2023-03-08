@@ -33,14 +33,18 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">{{__('messages.photo')}}</label>
                     <input type="file" class="form-control" name="photo" value="{{('photo')}}">
-                    <span class="text-danger">{{ $errors->first('photo') ?? '' }}</span>
+{{--                    <span class="text-danger">{{ $errors->first('photo') ?? '' }}</span>--}}
+                    <small id="photo_error" class="form-text text-danger"></small>
 
                 </div>
 
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">{{__('messages.Enter Offer AR')}}</label>
                     <input type="text" class="form-control" name="name_ar" value="{{ old('name') }}" placeholder="{{__('messages.Enter Offer AR')}}">
-                    <span class="text-danger">{{ $errors->first('name_ar') ?? '' }}</span>
+{{--                    <span class="text-danger">{{ $errors->first('name_ar') ?? '' }}</span>--}}
+                    <small id="name_ar_error" class="form-text text-danger"></small>
+
+
 
                     {{--                            @error('name')--}}
                     {{--                            <small class="form-text text-danger">{{($massages)}}</small>--}}
@@ -50,25 +54,35 @@
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">{{__('messages.Enter Offer EN')}}</label>
                     <input type="text" class="form-control" name="name_en" placeholder="{{__('messages.Enter Offer EN')}}">
-                    <span class="text-danger">{{ $errors->first('name_en') ?? '' }}</span>
+{{--                    <span class="text-danger">{{ $errors->first('name_en') ?? '' }}</span>--}}
+
+                    <small id="name_en_error" class="form-text text-danger"></small>
 
                 </div>
 
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">{{__('messages.Price Offer')}}</label>
                     <input type="text" class="form-control" name="price" placeholder="{{__('messages.Price Offer')}}">
-                    <span class="text-danger">{{ $errors->first('price') ?? '' }}</span>
+{{--                    <span class="text-danger">{{ $errors->first('price') ?? '' }}</span>--}}
+                    <small id="price_error" class="form-text text-danger"></small>
+
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">{{__('messages.Details Offer AR')}}</label>
                     <input type="text" class="form-control" name="details_ar"  placeholder="{{__('messages.Details Offer AR')}}">
-                    <span class="text-danger">{{ $errors->first('details_ar') ?? '' }}</span>
+{{--                    <span class="text-danger">{{ $errors->first('details_ar') ?? '' }}</span>--}}
+
+                    <small id="details_ar_error" class="form-text text-danger"></small>
+
                 </div>
 
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">{{__('messages.Details Offer EN')}}</label>
                     <input type="text" class="form-control" name="details_en" placeholder="{{__('messages.Details Offer EN')}}">
-                    <span class="text-danger">{{ $errors->first('details_en') ?? '' }}</span>
+{{--                    <span class="text-danger">{{ $errors->first('details_en') ?? '' }}</span>--}}
+
+                    <small id="details_en_error" class="form-text text-danger"></small>
+
                 </div>
 
                 <button id="save_offer" class="btn btn-primary">{{__('messages.Save Offer')}}</button>
@@ -82,6 +96,16 @@
 @section('scripts')
     <script>
         $(document).on('click', '#save_offer', function (e){
+
+            $('#photo_error').text('');
+            $('#name_ar_error').text('');
+            $('#name_en_error').text('');
+            $('#price_error').text('');
+            $('#details_ar_error').text('');
+            $('#details_en_error').text('');
+
+
+
             e.preventDefault();
             var formData = new FormData($('#offerForm')[0]);
 
@@ -104,6 +128,11 @@
 
 
                 },error: function (reject){
+                    var response = $.parseJSON(reject.responseText);
+                    $.each(response.errors,function (key,val) {
+                        $("#"+ key + "_error").text(val[0]);
+
+                    });
 
                 }
 

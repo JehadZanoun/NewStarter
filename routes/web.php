@@ -106,6 +106,20 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
     ##################### Begin ONe Many Relationship  ##################################
     Route::get('hospital-has-many', 'Relation\RelationController@getHospitalDoctors');
 
+    Route::get('hospitals', 'Relation\RelationController@hospitals')->name('hospital.all');
+
+    Route::get('doctors/{hospital_id}', 'Relation\RelationController@doctors')->name('hospital.doctors');
+
+    Route::get('hospitals/{hospital_id}', 'Relation\RelationController@deleteHospital')->name('hospital.delete');
+
+
+    Route::get('hospitals_has_doctors', 'Relation\RelationController@hospitalsHasDoctor');
+
+    Route::get('hospitals_has_doctors_male', 'Relation\RelationController@hospitalsHasOnlyMaleDoctor');
+
+    Route::get('hospitals_not_has_doctors', 'Relation\RelationController@hospitalsNotHasDoctor');
+
+
 
     ##################### End ONe Many Relationship  ##################################
 

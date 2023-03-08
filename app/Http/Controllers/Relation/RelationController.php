@@ -93,5 +93,45 @@ class RelationController extends Controller
 
     }
 
+    public function hospitals() {
+
+        $hosbital = Hosbital::select('id', 'name', 'address')->get();
+
+        return view('doctors.hospitals', compact('hosbital'));
+    }
+
+    public function doctors($hospital_id){
+
+       $hospital = Hosbital::find($hospital_id);
+        $doctors = $hospital-> doctors;
+        return view('doctors.doctors',compact('doctors'));
+
+    }
+
+    public function hospitalsHasDoctor() {
+       return $hospitals = Hosbital::whereHas('doctors')->get();
+    }
+
+    public function hospitalsHasOnlyMaleDoctor() {
+        return $hospitals = Hosbital::with('doctors')->whereHas('doctors', function($q){
+            $q->where('gender', 1);
+        })->get();
+
+    }
+
+    public function hospitalsNotHasDoctor() {
+        return Hosbital::whereDoesntHave('doctors')->get();
+    }
+
+    public function deleteHospital($hospital_id) {
+        $hospital = Hosbital::find($hospital_id);
+
+        if(!$hospital)
+            return abort('404');
+            $hospital ->doctors() ->delete();
+            $hospital->delete();
+            return redirect()->route('hospital.all');
+
+    }
 
 }
