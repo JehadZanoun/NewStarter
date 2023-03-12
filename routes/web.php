@@ -123,6 +123,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
 
     ##################### End ONe Many Relationship  ##################################
 
+    ##################### Begin Two Many Relationship  ##################################
+
+    Route::get('doctors-Services', 'Relation\RelationController@getDoctorServices');
+
+    Route::get('Service-doctor', 'Relation\RelationController@getServiceDoctor');
 
 
 

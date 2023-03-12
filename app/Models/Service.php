@@ -9,8 +9,8 @@ class Service extends Model
 {
     use HasFactory;
     protected $table = "services";
-    protected $fillable = ['name','created_at', 'updated_at'];
-    protected $hidden = ['created_at', 'updated_at'];
+    protected $fillable = ['name','created_at', 'update_at'];
+    protected $hidden = ['created_at', 'update_at', 'pivot'];
     public $timestamps = true;
 
     public function doctors() {

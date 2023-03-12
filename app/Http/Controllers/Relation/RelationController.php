@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\Hosbital;
 use App\Models\mobile;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -131,6 +132,23 @@ class RelationController extends Controller
             $hospital ->doctors() ->delete();
             $hospital->delete();
             return redirect()->route('hospital.all');
+
+    }
+
+    public function getDoctorServices() {
+//        $doctor = Doctor::find(3);
+//        return $doctor -> services;
+
+        return $doctor = Doctor::with('services')->find(3);
+
+    }
+
+    public function getServiceDoctor() {
+//        return $doctor = Service::with('doctors')->find(1);
+
+        return $doctor = Service::with(['doctors'=>function($q) {
+            $q->select('doctors.id', 'name', 'title');
+        }])->find(1);
 
     }
 
