@@ -129,6 +129,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
 
     Route::get('Service-doctor', 'Relation\RelationController@getServiceDoctor');
 
+    Route::get('doctors/Services/{doctor_id}', 'Relation\RelationController@getDoctorServicesById')->name('doctors.services');
 
 
 });

@@ -152,4 +152,15 @@ class RelationController extends Controller
 
     }
 
+    public function getDoctorServicesById($doctorId) {
+        $doctor = Doctor::find($doctorId);
+        $services = $doctor->services;
+
+
+        $doctors = Doctor::select('id', 'name') ->get();
+        $allServices = Service::select('id', 'name') ->get();
+
+        return view('doctors.services', compact('services', 'doctors', 'allServices'));
+    }
+
 }
