@@ -39,14 +39,13 @@
 
                 <br><br>
 
-                <form id="offerForm" method="POST" action="">
+                <form id="offerForm" method="POST" action="{{route('save.doctors.services')}}">
                     @csrf
                     {{--                        <input name="_token" value="{{csrf_token()}}">  ---> @csrf--}}
 
 
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">اختر طبيب</label>
-                        <input type="text" class="form-control" name="name_ar" value="{{ old('name') }}" placeholder="اختر طبيب">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">اختر طبيب</label>
 
                         <select class="form-control" name="doctor_id">
 
@@ -61,11 +60,10 @@
 
                     </div>
 
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">اختر الخدمات</label>
-                        <input type="text" class="form-control" name="name_ar" value="{{ old('name') }}" placeholder="اختر الخدمات">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">اختر الخدمات</label>
 
-                        <select class="form-control" name="servicesIds">
+                        <select class="form-control" name="servicesIds[]" multiple>
 
                                 @foreach($allServices as $allService)
                             <option value="{{$allService->id}}">{{$allService->name}}</option>

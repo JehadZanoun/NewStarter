@@ -163,4 +163,18 @@ class RelationController extends Controller
         return view('doctors.services', compact('services', 'doctors', 'allServices'));
     }
 
+    public function saveServiceToDoctor(Request $request) {
+        //return $request;
+
+         $doctor = Doctor::find($request->doctor_id);
+
+
+//        $doctor ->services()->attach($request->servicesIds);
+
+        $doctor ->services()->sync($request->servicesIds);
+
+        return 'Success';
+
+    }
+
 }
