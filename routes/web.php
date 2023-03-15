@@ -16,7 +16,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('Home');
 });
 
