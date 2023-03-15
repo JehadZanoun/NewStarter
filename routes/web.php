@@ -125,13 +125,19 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
 
     ##################### Begin Two Many Relationship  ##################################
 
-    Route::get('doctors-Services', 'Relation\RelationController@getDoctorServices');
+    Route::get('edoctors-Srvices', 'Relation\RelationController@getDoctorServices');
 
     Route::get('Service-doctor', 'Relation\RelationController@getServiceDoctor');
 
     Route::get('doctors/Services/{doctor_id}', 'Relation\RelationController@getDoctorServicesById')->name('doctors.services');
 
-    Route::post('saveService-to-doctor}', 'Relation\RelationController@saveServiceToDoctor')->name('save.doctors.services');
+    Route::post('saveService-to-doctor', 'Relation\RelationController@saveServiceToDoctor')->name('save.doctors.services');
+
+    ##################### End Two Many Relationship  ##################################
+
+    ##################### Begin Has One Through Relationship  ##################################
+
+    Route::get('has-one-trough', 'Relation\RelationController@getPatientDoctor')->name('doctors.services');
 
 
 });

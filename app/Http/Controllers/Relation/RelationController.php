@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\Hosbital;
 use App\Models\mobile;
+use App\Models\patient;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -160,7 +161,7 @@ class RelationController extends Controller
         $doctors = Doctor::select('id', 'name') ->get();
         $allServices = Service::select('id', 'name') ->get();
 
-        return view('doctors.services', compact('services', 'doctors', 'allServices'));
+        return view('doctors.services', compact('services', 'doctors','doctor', 'allServices'));
     }
 
     public function saveServiceToDoctor(Request $request) {
@@ -168,13 +169,27 @@ class RelationController extends Controller
 
          $doctor = Doctor::find($request->doctor_id);
 
+        if(!$doctor)
+            return abort('404');
+       // $doctor ->services()->attach($request->servicesIds);
 
-//        $doctor ->services()->attach($request->servicesIds);
+       //$doctor ->services()->sync($request->servicesIds);
 
-        $doctor ->services()->sync($request->servicesIds);
+        $doctor ->services()->syncWithoutDetaching($request->servicesIds);
 
-        return 'Success';
+
+        return redirect()->back()->with('Success');
+
 
     }
 
+        // has one through
+    public function getPatientDoctor() {
+       $patient = patient::find(1);
+        return $patient ->doctor;
+
+    }
+
+
+    
 }

@@ -5,12 +5,10 @@
     <div class="container">
 
 
-
-
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 text-center">
-                <h3>جدول الخدمات</h3>
+                <h3>{{$doctor->name}} : جدول الخدمات للطبيب  </h3>
 
                 <table class="table">
                     <thead>
@@ -46,8 +44,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">اختر طبيب</label>
-
-                        <select class="form-control" name="doctor_id">
+                        <select class="form-select" name="doctor_id">
 
                                 @foreach($doctors as $doctor)
 
@@ -63,7 +60,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">اختر الخدمات</label>
 
-                        <select class="form-control" name="servicesIds[]" multiple>
+                        <select class="form-select" name="servicesIds[]" multiple>
 
                                 @foreach($allServices as $allService)
                             <option value="{{$allService->id}}">{{$allService->name}}</option>
@@ -74,7 +71,7 @@
                     </div>
 
 
-                    <button id="save_offer" class="btn btn-primary">{{__('messages.Save Offer')}}</button>
+                    <button id="save_offer" class="btn btn-primary" style="margin-top: 30px">Save Service</button>
                 </form>
 
 
