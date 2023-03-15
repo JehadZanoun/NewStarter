@@ -101,9 +101,37 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
     Route::get('get-user-not-has-phone', 'Relation\RelationController@getUserNotHasPhone');
 
 
-
-
     ##################### End Routes Relation  ##################################
+
+    ##################### Begin ONe Many Relationship  ##################################
+    Route::get('hospital-has-many', 'Relation\RelationController@getHospitalDoctors');
+
+    Route::get('hospitals', 'Relation\RelationController@hospitals')->name('hospital.all');
+
+    Route::get('doctors/{hospital_id}', 'Relation\RelationController@doctors')->name('hospital.doctors');
+
+    Route::get('hospitals/{hospital_id}', 'Relation\RelationController@deleteHospital')->name('hospital.delete');
+
+
+    Route::get('hospitals_has_doctors', 'Relation\RelationController@hospitalsHasDoctor');
+
+    Route::get('hospitals_has_doctors_male', 'Relation\RelationController@hospitalsHasOnlyMaleDoctor');
+
+    Route::get('hospitals_not_has_doctors', 'Relation\RelationController@hospitalsNotHasDoctor');
+
+
+
+    ##################### End ONe Many Relationship  ##################################
+
+    ##################### Begin Two Many Relationship  ##################################
+
+    Route::get('doctors-Services', 'Relation\RelationController@getDoctorServices');
+
+    Route::get('Service-doctor', 'Relation\RelationController@getServiceDoctor');
+
+    Route::get('doctors/Services/{doctor_id}', 'Relation\RelationController@getDoctorServicesById')->name('doctors.services');
+
+    Route::post('saveService-to-doctor}', 'Relation\RelationController@saveServiceToDoctor')->name('save.doctors.services');
 
 
 });

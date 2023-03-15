@@ -20,7 +20,7 @@ class offerController extends Controller
     }
 
     //save offer into DB using AJAX
-    public function store(Request $request)
+    public function store(OfferRequest $request)
     {
 
         $file_name = $this->saveImage($request->photo, 'images/offers');
