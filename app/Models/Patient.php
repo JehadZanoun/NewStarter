@@ -10,6 +10,7 @@ class patient extends Model
     use HasFactory;
     protected $table = 'patients';
     protected $fillable = ['name', 'age'];
+    protected $hidden = ['created_at', 'update_at',];
     public $timestamps = false;
 
     public function doctor() {

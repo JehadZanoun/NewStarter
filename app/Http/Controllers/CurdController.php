@@ -122,13 +122,25 @@ class CurdController extends Controller
 //    }
 
         public function getAllOffers() {
-             $viewOffer  = Offer::Select('id',
-                 'name_'. LaravelLocalization::getCurrentLocale().' as name',
-                 'details_'. LaravelLocalization::getCurrentLocale().' as details',
+//             $viewOffer  = Offer::Select('id',
+//                 'name_'. LaravelLocalization::getCurrentLocale().' as name',
+//                 'details_'. LaravelLocalization::getCurrentLocale().' as details',
+//
+//                 'price','photo', 'details_ar')->get();
+//
+//        return view('offers.all', compact('viewOffer'));
 
-                 'price','photo', 'details_ar')->get();
+            ############### Paginate Result    ######################
 
-        return view('offers.all', compact('viewOffer'));
+            $viewOffer  = Offer::Select('id',
+                'name_'. LaravelLocalization::getCurrentLocale().' as name',
+                'details_'. LaravelLocalization::getCurrentLocale().' as details',
+
+                'price','photo', 'details_ar')->paginate(PAGINATION_COUNT);
+
+//            return view('offers.all', compact('viewOffer'));
+
+            return view('offers.paginations' ,compact('viewOffer'));
 
         }
 
@@ -202,6 +214,17 @@ class CurdController extends Controller
             $viedo = Viedo::first();
             event(new VideoViwer($viedo));
         return view('video')-> with('viedo', $viedo);
+
+        }
+
+                ##################### Scopes ############
+        public function getAllInactiveOffers() {
+       // return $inactiveoffer = Offer::where('status', 0)->get();
+
+//            return $inactiveoffer = Offer::inactive()->get();
+
+            return $inactiveoffer = Offer::invalid()->get();
+
 
         }
 

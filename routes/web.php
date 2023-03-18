@@ -16,6 +16,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
+define('PAGINATION_COUNT', 5);
+
 Route::get('/login', function () {
     return view('Home');
 });
@@ -52,6 +54,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
         Route::get('edit/{offer_id}', 'CurdController@editOffer');
         Route::post('update/{offer_id}', 'CurdController@updateOffer') -> name('offers.update');
         Route::get('delete/{offer_id}', 'CurdController@delete') -> name('offers.delete');
+
+        Route::get('get-all-inactive-offers','CurdController@getAllInactiveOffers');
+
 
     });
 
@@ -138,6 +143,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
     ##################### Begin Has One Through Relationship  ##################################
 
     Route::get('has-one-trough', 'Relation\RelationController@getPatientDoctor')->name('doctors.services');
+
+    Route::get('has-many-trough', 'Relation\RelationController@getCountryDoctor');
 
 
 });

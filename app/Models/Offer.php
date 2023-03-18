@@ -11,11 +11,20 @@ class Offer extends Model
     use HasFactory;
 
     protected $table = "offers";
-    protected $fillable = ['photo','name_ar', 'name_en', 'price', 'details_ar', 'details_en', 'created_at', 'updated_at'];
+    protected $fillable = ['photo','name_ar', 'name_en', 'price', 'details_ar', 'details_en', 'status', 'created_at', 'updated_at'];
     protected $hidden = ['created_at', 'updated_at'];
 
-
+    ##################### Scopes ############
+    public function scopeInactive($q) {
+        return $q -> where('status', 0);
+    }
+    
+    public function scopeInvalid($q) {
+        return $q -> where('status', 0)->whereNull('details_ar');
+    }
 
 
 }
+
+
 
