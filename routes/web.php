@@ -147,5 +147,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => ['loc
     Route::get('has-many-trough', 'Relation\RelationController@getCountryDoctor');
 
 
+
+    ################################## Begin Accessors & Mutators ##################################
+    Route::get('accessors', 'Relation\RelationController@getDoctors'); //get data
+
+    ################################## End Accessors & Mutators ##################################
+
 });
 

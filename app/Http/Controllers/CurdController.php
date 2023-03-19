@@ -6,6 +6,7 @@ use App\Events\VideoViwer;
 use App\Http\Requests\OfferRequest;
 use App\Models\Offer;
 use App\Models\Viedo;
+use App\Scopes\OfferScope;
 use App\Traits\OfferTriat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -221,9 +222,19 @@ class CurdController extends Controller
         public function getAllInactiveOffers() {
        // return $inactiveoffer = Offer::where('status', 0)->get();
 
+
+            ######### Local Scope ###########
+
 //            return $inactiveoffer = Offer::inactive()->get();
 
-            return $inactiveoffer = Offer::invalid()->get();
+//            return $inactiveoffer = Offer::invalid()->get();
+
+            ######### Global Scope ###########
+
+                        //return $inactiveoffer = Offer::get();
+
+            // How To Remove Global Scope
+           return $offer = Offer::withoutGlobalScope(OfferScope::class)->get();
 
 
         }
