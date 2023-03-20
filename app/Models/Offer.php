@@ -33,6 +33,12 @@ class Offer extends Model
         return $q -> where('status', 0)->whereNull('details_ar');
     }
 
+    ##################### Mutators ############
+
+    public function setNameEnAttribute($value) {
+        $this->attributes['name_en'] = strtoupper($value);
+    }
+
 
 }
 

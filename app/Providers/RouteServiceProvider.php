@@ -37,6 +37,11 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->configureRateLimiting();
 
+        $this->mapcollRoutes();
+
+
+
+
         $this->routes(function () {
             Route::prefix('api')
                 ->middleware('api')
@@ -59,5 +64,11 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
+    }
+
+    public function mapcollRoutes() {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/coll.php'));
     }
 }
